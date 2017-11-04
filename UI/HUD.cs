@@ -8,10 +8,6 @@ public class HUD : MonoBehaviour {
 	public Text healthDisplay;
 	public Text equipDisplay;
 
-
-	public string healthString;
-	public string equipString;
-
 	// Use this for initialization
 	void Start () {
 
@@ -19,9 +15,7 @@ public class HUD : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		healthString = Player.control.getHealth();
-		equipString = Player.control.getEquipped();
-		healthDisplay.text = healthString;
-		equipDisplay.text = equipString;
+		healthDisplay.text = ("HP: " + Player.control.getHealth());
+		equipDisplay.text = ("TOOL: " + Player.control.getEquipped());
 	}
 }

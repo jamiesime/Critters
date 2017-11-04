@@ -11,6 +11,13 @@ public class TestBiter : Critter {
 
 	private Rigidbody2D rb2d;
 
+	public int attackPower;
+
+	public void OnCollisionEnter2D(Collision2D other){
+		if (other.gameObject.tag == "Player" && !Player.control.invincible){
+			attack(other.gameObject);
+		}
+	}
 
 	// Use this for initialization
 	void Start () {
@@ -49,6 +56,12 @@ public class TestBiter : Critter {
 		}
 		Vector2 movement = new Vector2(moveHorizontal, moveVertical);
 		rb2d.AddForce(movement * moveSpeed);
+	}
+
+	public void attack(GameObject other){
+		PlayerActions.control.takeDamage(attackPower);
+		Vector2 movement = new Vector2 ((moveHorizontal * 10), (moveVertical * 10));
+		PlayerMovement.control.rb2d.AddForce (movement * (moveSpeed *10));
 	}
 
 

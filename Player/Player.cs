@@ -6,11 +6,13 @@ public class Player : MonoBehaviour {
 
 	public static Player control;
 
-	public GameObject PlayerObject;
+	public SpriteRenderer playerModel;
 
 	public NetType equipped;
 
 	public int health;
+	public bool hasDied;
+	public bool invincible;
 
 	// Use this for initialization
 	void Start () {
@@ -38,6 +40,21 @@ public class Player : MonoBehaviour {
 		return this.equipped.ToString();
 	}
 
+	public bool checkHealth(){
+		if (health < 1){
+			return hasDied = true;
+		}
+		StartCoroutine(recoveryState());
+		return hasDied = false;
+	}
+
+	public IEnumerator recoveryState(){
+		invincible = true;
+		playerModel.color = new Color (1f, 1f, 1f, 0.5f);
+		yield return new WaitForSeconds(2.0f);
+		invincible = false;
+		playerModel.color = new Color (1f, 1f, 1f, 1f);
+	}
 
 
 
