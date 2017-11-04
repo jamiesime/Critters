@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class PlayerMovement : Player  {
 
-	public Direction dir;
-
 	public float moveSpeed;
 
 	private Rigidbody2D rb2d;
