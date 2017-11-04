@@ -6,6 +6,9 @@ public enum NetType {Normal, Big};
 
 public class Net : MonoBehaviour {
 
+	public SpriteRenderer netModel;
+	public string sortingLayer = "LowScene";
+
 	public NetType netType;
 
 	public Direction dir;
@@ -18,9 +21,11 @@ public class Net : MonoBehaviour {
 
 	private Vector3 movement;
 
+	private bool landed;
+
 
 	public void OnTriggerEnter2D(Collider2D other){
-		if (other.gameObject.tag == "Critter") {
+		if (other.gameObject.tag == "Critter" && !landed) {
 			print ("Collision detected");
 			movement = Vector3.zero;
 			attemptCatch(other.gameObject);
@@ -29,6 +34,7 @@ public class Net : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
+
 		initialScale = new Vector3 (0.0f, 0.0f, 0.0f);
 		scaleIncrement = new Vector3 (0.1f, 0.1f, 0.1f);
 		finalScale = new Vector3 (1.0f, 1.0f, 1.0f);
@@ -42,6 +48,9 @@ public class Net : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		netThrow();
+		if (landed) {
+			SpriteEffects.control.fadeOutSprite(netModel);
+		}
 	}
 
 	public void findBehaviour(NetType type){
@@ -59,6 +68,9 @@ public class Net : MonoBehaviour {
 		{
 		 	this.gameObject.transform.localScale += scaleIncrement;
 		 	this.gameObject.transform.position += movement;
+		}
+		else {
+			StartCoroutine(delayAfterLanding());
 		}
 	}
 
@@ -84,6 +96,12 @@ public class Net : MonoBehaviour {
 	public void attemptCatch(GameObject critter){
 			critter.GetComponent<Critter>().caught = true;
 			Destroy(critter, 1.0f);
+	}
+
+	public IEnumerator delayAfterLanding(){
+		yield return new WaitForSeconds(0.5f);
+		netModel.sortingLayerName = sortingLayer;
+		landed = true;
 	}
 
 }
