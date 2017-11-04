@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class TestCritter : Critter {
 
-
 	public int movePeriod;
 	public float moveSpeed;
 	private float moveVertical;
@@ -19,11 +18,17 @@ public class TestCritter : Critter {
 		moveHorizontal = 0.0f;
 		moveVertical = 0.0f;
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
-		countTime();
-		standardMove();
+		if (!caught){
+			countTime();
+			standardMove();
+			}
+		else{
+			rb2d.velocity = Vector3.zero;
+			rb2d.angularVelocity = 0.0f;
+		}
 	}
 
 	public void countTime(){
@@ -37,13 +42,17 @@ public class TestCritter : Critter {
 		}
 		if (movePeriod > 200){
 			moveVertical = -1.0f;
-			moveHorizontal = 0.0f;	
+			moveHorizontal = 0.0f;
 		}
 		if (movePeriod > 400){
 			movePeriod = 0;
 		}
 		Vector2 movement = new Vector2(moveHorizontal, moveVertical);
 		rb2d.AddForce(movement * moveSpeed);
-
 	}
+
+
+
+
+
 }

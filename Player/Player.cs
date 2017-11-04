@@ -22,8 +22,6 @@ public class Player : MonoBehaviour {
 	}
 
 
-	//ALL PLAYER ACTIONS BELOW, CALLED IN SUBCLASSES
-
 	public Vector3 getCurrentPosition(){
 		return this.transform.position;
 	}

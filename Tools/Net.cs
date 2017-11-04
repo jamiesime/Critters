@@ -18,6 +18,15 @@ public class Net : MonoBehaviour {
 
 	private Vector3 movement;
 
+
+	public void OnTriggerEnter2D(Collider2D other){
+		if (other.gameObject.tag == "Critter") {
+			print ("Collision detected");
+			movement = Vector3.zero;
+			attemptCatch(other.gameObject);
+		}
+	}
+
 	// Use this for initialization
 	void Awake () {
 		initialScale = new Vector3 (0.0f, 0.0f, 0.0f);
@@ -70,6 +79,11 @@ public class Net : MonoBehaviour {
 				movement = new Vector3(distance, 0.0f, 0.0f);
 			break;
 		}
+	}
+
+	public void attemptCatch(GameObject critter){
+			critter.GetComponent<Critter>().caught = true;
+			Destroy(critter, 1.0f);
 	}
 
 }
