@@ -50,7 +50,8 @@ public class Net : MonoBehaviour {
 		netThrow();
 		if (landed) {
 			SpriteEffects.control.fadeOutSprite(netModel);
-		}
+			Destroy(this.gameObject, 1.0f);
+			}
 	}
 
 	public void findBehaviour(NetType type){

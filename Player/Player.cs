@@ -10,6 +10,8 @@ public class Player : MonoBehaviour {
 
 	public NetType equipped;
 
+	public int health;
+
 	// Use this for initialization
 	void Start () {
 		equipped = NetType.Normal;
@@ -20,8 +22,6 @@ public class Player : MonoBehaviour {
 	void Update () {
 
 	}
-
-
 	public Vector3 getCurrentPosition(){
 		return this.transform.position;
 	}
@@ -30,6 +30,13 @@ public class Player : MonoBehaviour {
 		return this.transform.rotation;
 	}
 
+	public string getHealth(){
+		return this.health.ToString();
+	}
+
+	public string getEquipped(){
+		return this.equipped.ToString();
+	}
 
 
 

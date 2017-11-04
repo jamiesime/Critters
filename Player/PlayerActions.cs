@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerActions : Player {
+public class PlayerActions : MonoBehaviour {
 
 	public GameObject netObject;
 
@@ -24,7 +24,7 @@ public class PlayerActions : Player {
 	public void throwNet(){
 		PlayerMovement.control.rb2d.velocity = Vector3.zero;
 		PlayerMovement.control.rb2d.angularVelocity = 0.0f;
-		GameObject net = (GameObject)Instantiate(netObject, getCurrentPosition(), getCurrentRotation());
+		GameObject net = (GameObject)Instantiate(netObject, Player.control.getCurrentPosition(), Player.control.getCurrentRotation());
 	}
 
 

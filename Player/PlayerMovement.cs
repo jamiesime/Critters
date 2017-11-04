@@ -4,14 +4,14 @@ using UnityEngine;
 
 public enum Direction {North, South, East, West};
 
-public class PlayerMovement : Player  {
+public class PlayerMovement : MonoBehaviour  {
 
 	public static PlayerMovement control;
 
 	public float moveSpeed;
 
 	public Rigidbody2D rb2d;
-	
+
 	public Direction dir;
 
 
