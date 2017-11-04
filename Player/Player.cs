@@ -8,10 +8,6 @@ public class Player : MonoBehaviour {
 
 	public GameObject PlayerObject;
 
-	public enum Direction {North, South, East, West};
-
-	public Direction dir;
-
 	public NetType equipped;
 
 	// Use this for initialization
@@ -19,7 +15,7 @@ public class Player : MonoBehaviour {
 		equipped = NetType.Normal;
 		control = this;
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 
@@ -35,6 +31,8 @@ public class Player : MonoBehaviour {
 	public Quaternion getCurrentRotation(){
 		return this.transform.rotation;
 	}
+
+
 
 
 

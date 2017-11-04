@@ -9,7 +9,7 @@ public class PlayerActions : Player {
 	// Use this for initialization
 	void Start () {
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		lookForInput();
@@ -22,6 +22,8 @@ public class PlayerActions : Player {
 	}
 
 	public void throwNet(){
+		PlayerMovement.control.rb2d.velocity = Vector3.zero;
+		PlayerMovement.control.rb2d.angularVelocity = 0.0f;
 		GameObject net = (GameObject)Instantiate(netObject, getCurrentPosition(), getCurrentRotation());
 	}
 
