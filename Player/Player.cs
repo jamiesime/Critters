@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour {
+public abstract class Player : MonoBehaviour {
 
 	public GameObject PlayerObject;
+
+	public enum Direction {North, South, East, West};
 
 	// Use this for initialization
 	void Start () {
@@ -15,4 +17,10 @@ public class Player : MonoBehaviour {
 	void Update () {
 		
 	}
+
+
+	//ALL PLAYER ACTIONS BELOW, CALLED IN SUBCLASSES
+
+
+
 }

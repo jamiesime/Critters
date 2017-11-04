@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerMovement : Player  {
 
+	public Direction dir;
+
 	public float moveSpeed;
 
 	private Rigidbody2D rb2d;
@@ -15,7 +17,8 @@ public class PlayerMovement : Player  {
 	
 	// Update is called once per frame
 	void Update () {
-		getMovement(); 
+		getMovement();
+		getDirection();
 	}
 
 
@@ -26,6 +29,21 @@ public class PlayerMovement : Player  {
 
 		rb2d.AddForce (movement * moveSpeed);
 	
+	}
+
+	public void getDirection(){
+		if (Input.GetAxis("Vertical") > 0.0f){
+			dir = Direction.North;
+		}
+		if (Input.GetAxis("Vertical") < 0.0f){
+			dir = Direction.South;
+		}
+		if (Input.GetAxis("Horizontal") < 0.0f){
+			dir = Direction.West;
+		}
+		if (Input.GetAxis("Horizontal") > 0.0f){
+			dir = Direction.East;
+		}
 	}
 
 }
