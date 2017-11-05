@@ -6,7 +6,7 @@ public class PlayerActions : MonoBehaviour {
 
 	public static PlayerActions control;
 
-	public GameObject netObject;
+	public GameObject primaryTool;
 
 	// Use this for initialization
 	void Start () {
@@ -15,19 +15,27 @@ public class PlayerActions : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		primaryTool = Player.control.equipment[0];
 		lookForInput();
 	}
 
 	public void lookForInput(){
 		if (Input.GetButtonDown("PrimaryAction")){
-			throwNet();
+			primaryEquip();
+		}
+		if(Input.GetButtonDown("Switch")){
+			swapEquipped();
 		}
 	}
 
-	public void throwNet(){
+	public void swapEquipped(){
+		Equipment.control.cycleEquipped();
+	}
+
+	public void primaryEquip(){
 		PlayerMovement.control.rb2d.velocity = Vector3.zero;
 		PlayerMovement.control.rb2d.angularVelocity = 0.0f;
-		GameObject net = (GameObject)Instantiate(netObject, Player.control.getCurrentPosition(), Player.control.getCurrentRotation());
+		GameObject net = (GameObject)Instantiate(primaryTool, Player.control.getCurrentPosition(), Player.control.getCurrentRotation());
 	}
 
 	public void takeDamage(int damage){

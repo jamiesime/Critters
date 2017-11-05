@@ -4,12 +4,12 @@ using UnityEngine;
 
 public enum NetType {Normal, Big};
 
-public class Net : MonoBehaviour {
+public class Net : MonoBehaviour{
 
 	public SpriteRenderer netModel;
 	public string sortingLayer = "LowScene";
 
-	public NetType netType;
+	public GameObject netType;
 
 	public Direction dir;
 
@@ -26,7 +26,6 @@ public class Net : MonoBehaviour {
 
 	public void OnTriggerEnter2D(Collider2D other){
 		if (other.gameObject.tag == "Critter" && !landed) {
-			print ("Collision detected");
 			movement = Vector3.zero;
 			attemptCatch(other.gameObject);
 		}
@@ -54,13 +53,8 @@ public class Net : MonoBehaviour {
 			}
 	}
 
-	public void findBehaviour(NetType type){
-		switch (type)
-		{
-			case NetType.Normal:
+	public void findBehaviour(GameObject netType){
 
-			break;
-		}
 	}
 
 	public void netThrow(){

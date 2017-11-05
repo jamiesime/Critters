@@ -8,7 +8,8 @@ public class Player : MonoBehaviour {
 
 	public SpriteRenderer playerModel;
 
-	public NetType equipped;
+	public List<GameObject> equipment;
+	public GameObject equipped;
 
 	public int health;
 	public bool hasDied;
@@ -16,8 +17,8 @@ public class Player : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		equipped = NetType.Normal;
 		control = this;
+		Equipment.control.populateEquipment(equipment);
 	}
 
 	// Update is called once per frame
@@ -37,7 +38,7 @@ public class Player : MonoBehaviour {
 	}
 
 	public string getEquipped(){
-		return this.equipped.ToString();
+		return this.equipped.name;
 	}
 
 	public bool checkHealth(){
