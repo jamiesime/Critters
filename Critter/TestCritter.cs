@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class TestCritter : Critter {
 
-	public SpriteRenderer sr;
-	public Sprite sleepSprite;
 
 	public int movePeriod;
 	public float moveSpeed;

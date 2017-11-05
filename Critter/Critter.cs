@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Critter : MonoBehaviour {
 
+	public SpriteRenderer sr;
+	public Sprite sleepSprite;
 
 	public GameObject CritterModel;
 

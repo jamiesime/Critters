@@ -36,6 +36,9 @@ public class TestBiter : Critter {
 			rb2d.velocity = Vector3.zero;
 			rb2d.angularVelocity = 0.0f;
 		}
+		if (sleep){
+			sr.sprite = sleepSprite;
+		}
 	}
 
 	public void countTime(){
