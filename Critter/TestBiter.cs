@@ -14,7 +14,7 @@ public class TestBiter : Critter {
 	public int attackPower;
 
 	public void OnCollisionEnter2D(Collision2D other){
-		if (other.gameObject.tag == "Player" && !Player.control.invincible){
+		if (other.gameObject.tag == "Player" && !Player.control.invincible && !sleep){
 			attack(other.gameObject);
 		}
 	}
@@ -28,7 +28,7 @@ public class TestBiter : Critter {
 
 	// Update is called once per frame
 	void Update () {
-		if (!caught){
+		if (!caught && !sleep){
 			countTime();
 			standardMove();
 			}

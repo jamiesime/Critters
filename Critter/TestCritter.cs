@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class TestCritter : Critter {
 
+	public SpriteRenderer sr;
+	public Sprite sleepSprite;
+
 	public int movePeriod;
 	public float moveSpeed;
 	private float moveVertical;
@@ -21,13 +24,16 @@ public class TestCritter : Critter {
 
 	// Update is called once per frame
 	void Update () {
-		if (!caught){
+		if (!caught && !sleep){
 			countTime();
 			standardMove();
 			}
 		else{
 			rb2d.velocity = Vector3.zero;
 			rb2d.angularVelocity = 0.0f;
+		}
+		if (sleep){
+			sr.sprite = sleepSprite;
 		}
 	}
 

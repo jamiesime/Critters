@@ -8,6 +8,7 @@ public class Critter : MonoBehaviour {
 	public GameObject CritterModel;
 
 	public bool caught;
+	public bool sleep;
 
 	// Use this for initialization
 	void Start () {

@@ -8,6 +8,7 @@ public class Equipment : MonoBehaviour {
 
 	public GameObject normalNet;
 	public GameObject normalTrap;
+	public GameObject sleepTrap;
 
 	// Use this for initialization
 	void Awake () {
@@ -22,6 +23,7 @@ public class Equipment : MonoBehaviour {
 	public void populateEquipment(List<GameObject> equipment){
 		equipment.Add(normalNet);
 		equipment.Add(normalTrap);
+		equipment.Add(sleepTrap);
 	}
 
 	public void cycleEquipped(){
